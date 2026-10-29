@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My personal student portfolio website">
+    <title>My Student Portfolio</title>
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172554;
+            background: #ffffff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            min-height: 80px;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #ffffff;
+        }
+
+        .logo {
+            color: #172554;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .navbar nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .navbar nav a {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .navbar nav a:hover {
+            color: #2563eb;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 540px;
+            padding: 70px 10%;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(135deg, #eff6ff, #f8faff);
+        }
+
+        .badge,
+        .section-label {
+            display: inline-block;
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 55px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero h2 {
+            color: #475569;
+            font-size: 19px;
+            margin-bottom: 18px;
+        }
+
+        .hero-content > p {
+            max-width: 520px;
+            color: #64748b;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            color: #ffffff;
+            background: #2563eb;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        /* PROFILE CARD */
+        .profile-picture {
+            text-align: center;
+            padding: 35px 20px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            box-shadow: 0 15px 40px #17255412;
+        }
+
+        .avatar {
+            width: 155px;
+            height: 155px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dbeafe;
+            border-radius: 50%;
+            font-size: 75px;
+        }
+
+        .profile-picture h3 {
+            font-size: 22px;
+        }
+
+        .profile-picture p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* GENERAL CONTENT SECTIONS */
+        .section {
+            padding: 75px 10%;
+            text-align: center;
+            scroll-margin-top: 20px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            max-width: 750px;
+            margin: 0 auto;
+            color: #64748b;
+        }
+
+        /* SKILLS */
+        .skills-section {
+            background: #f8faff;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .card {
+            padding: 30px 22px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px #17255412;
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* FUTURE GOALS */
+        .goal-section {
+            background: #eff6ff;
+        }
+
+        /* CONTACT */
+        .contact-detail {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #eff6ff;
+            border-radius: 8px;
+            color: #2563eb;
+            overflow-wrap: anywhere;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 28px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #e5e7eb;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* TABLET AND MOBILE */
+        @media (max-width: 900px) {
+            .navbar {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero {
+                padding-left: 7%;
+                padding-right: 7%;
+                gap: 25px;
+            }
+
+            .section {
+                padding-left: 7%;
+                padding-right: 7%;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .navbar {
+                flex-direction: column;
+                padding: 18px 5%;
+            }
+
+            .navbar nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 50px 7%;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .profile-picture {
+                max-width: 380px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .section {
+                padding: 55px 7%;
+            }
+
+            .section h2 {
+                font-size: 27px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <a href="#home" class="logo">🎓 My Profile</a>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="badge">STUDENT PORTFOLIO</span>
+
+                <h1>Hello, I'm <span>Jemboy A. Gusarim</span></h1>
+
+                <h2>Information Technology Student</h2>
+
+                <p>
+                    Welcome to my personal website! I am a student
+                    who enjoys learning about technology, developing
+                    new skills, and creating innovative projects.
+                </p>
+
+                <a href="#about" class="button">Get to Know Me →</a>
+            </div>
+
+            <div class="profile-picture">
+                <div class="avatar">👨🏻‍💻</div>
+                <h3>Jemboy A. Gusarim</h3>
+                <p>Future IT Professional</p>
+            </div>
+        </section>
+
+        <!-- ABOUT ME -->
+        <section class="section" id="about">
+            <span class="section-label">INTRODUCTION</span>
+            <h2>About Me</h2>
+
+            <p class="description">
+                My name is Jemboy A. Gusarim, and I am an Information
+                Technology student. I am interested in computers,
+                programming, and web development. I want to improve
+                my knowledge and become a successful IT professional
+                in the future.
+            </p>
+        </section>
+
+        <!-- SKILLS AND INTERESTS -->
+        <section class="section skills-section" id="skills">
+            <span class="section-label">WHAT I DO</span>
+            <h2>My Skills and Interests</h2>
+
+            <div class="cards">
+
+                <article class="card">
+                    <div class="card-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>
+                        Learning to create websites using HTML and CSS.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Creativity</h3>
+                    <p>
+                        Designing simple and user-friendly interfaces.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Teamwork</h3>
+                    <p>
+                        Working with others to accomplish shared goals.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- FUTURE GOALS -->
+        <section class="section goal-section" id="goals">
+            <span class="section-label">MY AMBITION</span>
+            <h2>My Future Goal</h2>
+
+            <p class="description">
+                My goal is to graduate, strengthen my technical skills,
+                and become an IT professional who can develop useful
+                systems and solve real-world problems through technology.
+            </p>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact-section" id="contact">
+            <span class="section-label">GET IN TOUCH</span>
+            <h2>Contact Me</h2>
+
+            <p class="description">
+                Thank you for visiting my personal portfolio.
+                Feel free to contact me using the email below.
+            </p>
+
+            <p class="contact-detail">
+                Email: gusarim.jemboy22@gmail.com
+            </p>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Jemboy A. Gusarim | My Student Portfolio</p>
+        <a href="#home">Back to Top ↑</a>
+    </footer>
+
+</body>
+</html>
